@@ -1,0 +1,1 @@
+java -Dserver.port=8101 -jar build/libs/sars-download-0.1.0.jar

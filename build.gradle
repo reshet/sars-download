@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.4.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'spring-boot'
+
+jar {
+    baseName = 'sars-download'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+configurations{
+    foo.extendsFrom(compile)
+}
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    // tag::actuator[]
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    // end::actuator[]
+    //compile("org.springframework.security:spring-security-web:3.2.5.RELEASE")
+//    compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.security:spring-security-config:3.2.5.RELEASE")
+    compile("org.springframework.security:spring-security-web:3.2.5.RELEASE")
+    compile("ch.qos.logback:logback-classic:1.1.3")
+    compile("net.logstash.logback:logstash-logback-encoder:4.4")
+    compile fileTree(dir: 'src/main/webapp/WEB-INF/lib/', include: '*.jar')
+    testCompile("junit:junit")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
