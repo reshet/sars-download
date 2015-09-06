@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 public class SpssDownloadServlet extends HttpServlet {
   protected static final int DEFAULT_REQUEST_LIMIT_KB = 262144000;
@@ -23,7 +24,7 @@ public class SpssDownloadServlet extends HttpServlet {
 
     String anketId = request.getParameter("anketId");
 
-    String original_file_name = "spss_massiv_" + anketId + ".sav";
+    String original_file_name = "spss_anket_" + anketId + "_ " + LocalDateTime.now() + ".sav";
 
     response.setHeader("Content-Disposition", "attachment; filename=\"" + original_file_name + "\"");
 
